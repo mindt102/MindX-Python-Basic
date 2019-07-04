@@ -42,10 +42,7 @@ input("\nPress Enter to continue\n")
 print("10x10 1's and 0's consecutively:")
 for i in range (1,10 + 1):
     for j in range (1,10+1):
-        if i%2 == 0:
-            print(1- j%2,end = "  ")
-        else:
-            print(j%2,end = "  ")        
+            print(1 - (i%2 - j%2)**2,end = "  ")      
     print()
 input("\nPress Enter to continue\n")
 
@@ -54,9 +51,6 @@ n = int(input("Enter a number: "))
 print(n,'x',n,"1's and 0's consecutively:",sep = "")
 for i in range (1,n + 1):
     for j in range (1,n+1):
-        if i%2 == 0:
-            print(1- j%2,end = "  ")
-        else:
-            print(j%2,end = "  ")        
+       print(1 - (i%2 - j%2)**2,end = "  ")    
     print()
 input("\nPress Enter to quit\n")
