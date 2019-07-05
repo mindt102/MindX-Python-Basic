@@ -1,6 +1,13 @@
 import pyglet
+import datetime
 
-music = pyglet.resource.media('crowd-cheering.mp3')
-music.play()
+music = pyglet.resource.media('duck_quack.wav',streaming = False)
 
-pyglet.app.run()
+while True:
+    date = datetime.datetime.now()
+    if date.hour <21:
+        music.play()
+        break
+
+    
+    

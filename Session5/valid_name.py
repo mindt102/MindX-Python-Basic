@@ -2,8 +2,8 @@
 while True:
     valid_name = True
     name = input("Enter name: ")
-    for i in range(10):
-        if str(i) in name:
+    for i in "0123456789":
+        if i in name:
             valid_name = False
     if valid_name:
         break
