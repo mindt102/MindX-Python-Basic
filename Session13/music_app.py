@@ -111,7 +111,7 @@ while True:
                     print("Invalid option")
 
             # Play song                 
-            file_name = song_list[numb_to_play]["id"] + ".mp4"
+            file_name = song_list[numb_to_play]["id"] + ".mp3"
             source = pyglet.media.load(file_name)
             player.queue(source)
             player.play()
@@ -179,9 +179,18 @@ while True:
             # Download the song
             print("Downloading please wait ...")
             ydl_opts = {
-                'outtmpl' : "%(id)s.mp4",
-                'logger': MyLogger(),
+                'outtmpl' : "%(id)s.mp3",       # lấy tên file đown về là id của video
+                'logger': MyLogger(),           
                 'progress_hooks': [my_hook],
+            #     'postprocessors': [{
+
+            #     'key': 'FFmpegExtractAudio', # Tách lấy audio
+
+            #     'preferredcodec': 'mp3', # Format ưu tiên là mp3
+
+            #     'preferredquality': '192', # Chất lượng bitrate
+
+            # }],
             }
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([song_infos["webpage_url"]])
@@ -191,7 +200,7 @@ while True:
             while True:
                 want_play = input("Do you want to play it?(y/n) ").lower()
                 if want_play == "y":
-                    file_name = song_infos["id"] + ".mp4"
+                    file_name = song_infos["id"] + ".mp3"
                     source = pyglet.media.load(file_name)
                     player.queue(source)
                     player.play()
