@@ -179,25 +179,26 @@ while True:
             # Download the song
             print("Downloading please wait ...")
             ydl_opts = {
-                'outtmpl' : "%(id)s.mp3",       # lấy tên file đown về là id của video
+                'outtmpl' : "%(id)s",       # lấy tên file đown về là id của video
                 'logger': MyLogger(),           
-                'progress_hooks': [my_hook],
-            #     'postprocessors': [{
+                # 'progress_hooks': [my_hook],
+                'postprocessors': [{
 
-            #     'key': 'FFmpegExtractAudio', # Tách lấy audio
+                'key': 'FFmpegExtractAudio', # Tách lấy audio
 
-            #     'preferredcodec': 'mp3', # Format ưu tiên là mp3
+                'preferredcodec': 'mp3', # Format ưu tiên là mp3
 
-            #     'preferredquality': '192', # Chất lượng bitrate
+                'preferredquality': '192', # Chất lượng bitrate
 
-            # }],
+            }],
             }
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([song_infos["webpage_url"]])
-            
+            print("Done downloading.")
 
             # Ask to play
             while True:
+                
                 want_play = input("Do you want to play it?(y/n) ").lower()
                 if want_play == "y":
                     file_name = song_infos["id"] + ".mp3"
